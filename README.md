@@ -2,7 +2,7 @@
 
 This repository contains the source code for the paper:
 
-> **Detecting Denial-of-Service Attacks on LLM Serving Systems via eBPF-Based GPU and CPU Tracing**
+> **Mitigating Black-Box Denial-of-Service Attacks on Large Language Models via eBPF Observability**
 
 ## Overview
 
@@ -146,7 +146,7 @@ If you use this code in your research, please cite:
 
 ```bibtex
 @misc{llmdos2025,
-  title={Detecting Denial-of-Service Attacks on LLM Serving Systems via eBPF-Based GPU and CPU Tracing},
+  title={Mitigating Black-Box Denial-of-Service Attacks on Large Language Models via eBPF Observability},
   year={2025}
 }
 ```
