@@ -1,0 +1,22 @@
+[project]
+name = "llm-dos"
+version = "0.1.0"
+description = "eBPF-based DoS attack detection for LLM serving systems"
+readme = "README.md"
+license = {text = "MIT"}
+requires-python = ">=3.12"
+dependencies = [
+    "matplotlib>=3.10.0",
+    "numpy>=1.26.0",
+    "pandas>=2.2.0",
+    "scikit-learn>=1.4.0",
+    "seaborn>=0.13.0",
+]
+
+[project.optional-dependencies]
+serving = [
+    "vllm>=0.6.0",
+]
+dev = [
+    "jupyter>=1.0.0",
+]

@@ -1,0 +1,176 @@
+{
+  "feature_columns": [
+    "total_time_seconds",
+    "total_events",
+    "num_kernels",
+    "total_bytes",
+    "total_latency_ms",
+    "bytes_per_second_MB",
+    "events_per_second",
+    "latency_per_kernel",
+    "latency_per_event",
+    "wall_clock_ratio",
+    "iat_mean_s",
+    "iat_std_s",
+    "iat_max_s",
+    "iat_min_s",
+    "latency_std_ms",
+    "latency_max_ms",
+    "latency_min_ms",
+    "bytes_std",
+    "bytes_max",
+    "bytes_min"
+  ],
+  "train_samples": 1600,
+  "test_samples": 400,
+  "results": [
+    {
+      "classifier": "Random Forest",
+      "f1": 0.995,
+      "precision": 0.995,
+      "recall": 0.995,
+      "fpr": 0.005,
+      "auc": 0.9998,
+      "tp": 199,
+      "fp": 1,
+      "tn": 199,
+      "fn": 1
+    },
+    {
+      "classifier": "Gradient Boosting",
+      "f1": 0.995,
+      "precision": 0.995,
+      "recall": 0.995,
+      "fpr": 0.005,
+      "auc": 0.9975,
+      "tp": 199,
+      "fp": 1,
+      "tn": 199,
+      "fn": 1
+    },
+    {
+      "classifier": "Logistic Regression",
+      "f1": 0.9924,
+      "precision": 1.0,
+      "recall": 0.985,
+      "fpr": 0.0,
+      "auc": 0.9998,
+      "tp": 197,
+      "fp": 0,
+      "tn": 200,
+      "fn": 3
+    }
+  ],
+  "feature_importance_top10": [
+    {
+      "feature": "latency_std_ms",
+      "importance": 0.2714
+    },
+    {
+      "feature": "latency_max_ms",
+      "importance": 0.2019
+    },
+    {
+      "feature": "total_time_seconds",
+      "importance": 0.0967
+    },
+    {
+      "feature": "total_latency_ms",
+      "importance": 0.0677
+    },
+    {
+      "feature": "num_kernels",
+      "importance": 0.0644
+    },
+    {
+      "feature": "total_bytes",
+      "importance": 0.0604
+    },
+    {
+      "feature": "total_events",
+      "importance": 0.0573
+    },
+    {
+      "feature": "latency_per_event",
+      "importance": 0.0466
+    },
+    {
+      "feature": "latency_per_kernel",
+      "importance": 0.036
+    },
+    {
+      "feature": "bytes_std",
+      "importance": 0.0344
+    }
+  ],
+  "cohens_d": [
+    {
+      "feature": "latency_max_ms",
+      "d": 4.6954
+    },
+    {
+      "feature": "total_latency_ms",
+      "d": 1.261
+    },
+    {
+      "feature": "latency_std_ms",
+      "d": 1.1555
+    },
+    {
+      "feature": "bytes_std",
+      "d": -1.0669
+    },
+    {
+      "feature": "total_events",
+      "d": 0.9676
+    },
+    {
+      "feature": "events_per_second",
+      "d": -0.9014
+    },
+    {
+      "feature": "bytes_per_second_MB",
+      "d": -0.8736
+    },
+    {
+      "feature": "num_kernels",
+      "d": 0.7681
+    },
+    {
+      "feature": "total_bytes",
+      "d": 0.7298
+    },
+    {
+      "feature": "total_time_seconds",
+      "d": 0.653
+    },
+    {
+      "feature": "iat_mean_s",
+      "d": 0.6039
+    },
+    {
+      "feature": "latency_per_event",
+      "d": 0.4521
+    },
+    {
+      "feature": "latency_per_kernel",
+      "d": 0.4479
+    },
+    {
+      "feature": "latency_min_ms",
+      "d": -0.4184
+    },
+    {
+      "feature": "iat_max_s",
+      "d": 0.1574
+    },
+    {
+      "feature": "iat_std_s",
+      "d": -0.0914
+    },
+    {
+      "feature": "wall_clock_ratio",
+      "d": 0.0592
+    }
+  ]
+}

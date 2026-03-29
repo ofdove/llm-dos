@@ -1,0 +1,53 @@
+# Python
+__pycache__/
+*.py[cod]
+*.so
+*.egg-info/
+dist/
+build/
+.venv/
+venv/
+
+# Data (too large for git)
+datasets/
+tracing_output/
+tracing_output_cpu/
+*.csv
+*.npy
+*.json
+!models/metadata.json
+!monitor/*.json
+!monitor/*.yaml
+
+# Models (binary)
+models/*.pkl
+models/*.joblib
+
+# IDE
+.vscode/
+.idea/
+.cursor/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+
+# eBPF build artifacts
+*.o
+*.skel.h
+.output/
+
+# LaTeX
+*.aux
+*.bbl
+*.blg
+*.log
+*.out
+*.pdf
+*.synctex.gz
+
+# Environment
+.env
+*.key
