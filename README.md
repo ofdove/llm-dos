@@ -68,68 +68,6 @@ LLM-DoS is a kernel-level detection system for denial-of-service (DoS) attacks t
 - **libbpf** >= 1.0 (for building eBPF programs)
 - **clang/llvm** (for compiling BPF C code)
 
-## Quick Start
-
-### 1. Install Python dependencies
-
-```bash
-pip install -e .
-# Or with uv:
-uv sync
-```
-
-### 2. Build the eBPF tracer
-
-```bash
-cd ebpf/cuda-tracing
-
-# Generate vmlinux.h from your running kernel
-bpftool btf dump file /sys/kernel/btf/vmlinux format c > vmlinux.h
-
-# Build
-make
-```
-
-### 3. Launch vLLM with tracing
-
-Terminal 1 — Start vLLM with the pyhook agent:
-```bash
-./run_vllm.sh
-```
-
-Terminal 2 — Start the pyhook collector (requires root):
-```bash
-./run_pyhook.sh
-```
-
-Terminal 3 — Start the eBPF tracer (requires root):
-```bash
-sudo ./ebpf/cuda-tracing/cuda_trace
-```
-
-### 4. Collect traces
-
-```bash
-# Send normal requests
-python experiments/send_prompts_simple.py
-
-# Send DoS requests
-python experiments/send_dos_prompts_simple.py
-```
-
-### 5. Build dataset and train classifiers
-
-```bash
-python scripts/build_llm_dos_dataset.py --max-files 1000 --split 0.2
-python scripts/train_classifiers.py
-```
-
-### 6. Run early detection experiments
-
-```bash
-python scripts/run_early_detection.py
-```
-
 ## How It Works
 
 1. **Tracing**: eBPF uprobes on `libcuda.so` capture GPU API calls (kernel launches, memory operations, synchronization). Kernel tracepoints capture CPU scheduling, futex, and mmap events. A Python `sys.setprofile` hook in vLLM assigns a unique trace ID to each incoming request and writes the TID-to-trace-ID mapping into a pinned BPF map.
@@ -140,19 +78,3 @@ python scripts/run_early_detection.py
 
 4. **Classification**: A lightweight classifier (Random Forest by default) distinguishes normal requests from DoS attacks in real time. Early detection is possible within the first few seconds of a request.
 
-## Citation
-
-If you use this code in your research, please cite:
-
-```bibtex
-@misc{llmdos2025,
-  title={Mitigating Black-Box Denial-of-Service Attacks on Large Language Models via eBPF Observability},
-  year={2025}
-}
-```
-
-## License
-
-This project is licensed under the MIT License. See [LICENSE](LICENSE) for details.
-
-The eBPF programs (`ebpf/cuda-tracing/*.bpf.c`) are dual-licensed under GPL-2.0 (required for BPF programs loaded into the Linux kernel) and MIT.
